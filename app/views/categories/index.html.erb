@@ -2,8 +2,10 @@
   <h1> Listing Category </h1>
 
   <% @categories.each do |category| %>
+    <%= link_to products_path(@category) do %>
     <ul>
       <li><%= category.name %></li>
     </ul>
+    <% end %>
   <% end %>
 </div>

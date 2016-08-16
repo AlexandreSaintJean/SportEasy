@@ -7,4 +7,13 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
+mountain = Category.create(name: "Mountain")
 
+paul = User.create(email: "paul@paul.com", password: "123456789", gender: "male", first_name: "Paul", last_name: "McCartney", city: "Bordeaux", phone_number: 55555456, birth_date: 19561225)
+john = User.create(email: "john@paul.com", password: "123456789", gender: "male", first_name: "John", last_name: "Lennon", city: "Bordeaux", phone_number: 55545456, birth_date: 19620512)
+
+pink_bike = Product.create(name: "Pink bike", description: "A pretty little pink bike", city: "Bordeaux", price_per_day: 5)
+
+rent1 = Booking.create(start_date: 20160505, end_date: 20160515)
+
+post1 = Post.create(question: "How are you ?")

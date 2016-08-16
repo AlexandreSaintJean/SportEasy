@@ -1,5 +1,5 @@
 class Product < ApplicationRecord
-  belongs_to :category
+  belongs_to :category, :user
   has_many :posts
   # has_many :bookings
   has_one :user

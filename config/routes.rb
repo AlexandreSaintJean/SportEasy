@@ -1,11 +1,5 @@
 Rails.application.routes.draw do
-  get 'products/indexshow'
 
-  get 'products/new'
-
-  get 'products/create'
-
-  get 'products/destroy'
 
   # get 'users/create'
 
@@ -22,6 +16,11 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'categories#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-    resources :products
+    resources :users, only: [:show]
+
+    resources :products do
+      resources :posts, only: [:create]
+      resources :bookings, only: [:create, :update]
+    end
 
 end

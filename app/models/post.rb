@@ -1,4 +1,4 @@
 class Post < ApplicationRecord
   belongs_to :user
-  Validates :question, presence: true
+  validates :question, presence: true
 end

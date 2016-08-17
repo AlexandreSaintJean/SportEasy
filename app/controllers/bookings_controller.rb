@@ -1,9 +1,5 @@
 class BookingsController < ApplicationController
-  before_action: find_booking, only: [:create, :edit, :update]
-
-  def new
-    @booking = Booking.new
-  end
+  before_action :find_booking, only: [:create, :edit, :update]
 
   def create
     @booking = Booking.new(booking_params)

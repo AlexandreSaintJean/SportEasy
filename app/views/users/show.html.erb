@@ -3,11 +3,9 @@
     <div class="info-dashboard">
       <div class="current-profil">
         <h2 class= "text-center">Mes informations personnelles</h2>
-          <%= link_to user_path(current_user), method: :edit do %>
             <div class="profil-actions">
               <i class="fa fa-pencil" aria-hidden="true"></i>
             </div>
-          <% end %>
           <p><%= "First name: " + current_user.first_name + "  Last name: " + current_user.last_name %></p>
           <p><%= "Gender: " + current_user.gender.to_s %></p>
           <p><%= "Your email address: " + current_user.email.to_s %></p>
@@ -30,10 +28,6 @@
           <%= f.button :submit %>
         <% end %>
       </div>
-
-
-
-
     </div>
 
 

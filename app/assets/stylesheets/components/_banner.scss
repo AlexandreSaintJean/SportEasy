@@ -1,0 +1,24 @@
+.banner {
+  color: white;
+  height: 100vh;
+  background-size: cover;
+  /* if you have a 70px navbar => height: calc(100vh - 70px); */
+  // background-color: red;
+  background-image: image-url('powder.jpg');
+}
+.banner h1 {
+  font-size: 50px;
+  font-weight: 300;
+  text-shadow: 0px 6px #539EC2;
+  position: left;
+  padding-left: 70px;
+  padding-top: 150px;
+  color: black;
+  font-style: italic;
+}
+.banner p {
+  font-size: 20px;
+  font-weight: lighter;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 20px;
+}

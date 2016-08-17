@@ -1,14 +1,11 @@
 <h1>Products#show</h1>
 
-<ul>
 <div>
   <p><%= @product.name %></p>
   <p><%= @product.category.name %></p>
-   <p><%= @product.description %></p>
+  <p><%= @product.description %></p>
   <p><%= @product.city %></p>
   <p><%= @product.price_per_day %> € per day</p>
 </div>
-</ul>
 
-
-
+<%= render 'bookings/new' %>

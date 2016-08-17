@@ -1,0 +1,9 @@
+<h2>Book this product</h2>
+<div class="booking_form">
+  <%= simple_form_for [@product, @booking] do |f| %>
+    <%= f.error_notification %>
+    <%= f.input :start_date, input_html: { id: 'datetimepicker1' } %>
+    <%= f.input :end_date, input_html: { id: 'datetimepicker2' } %>
+    <%= f.button :submit %>
+  <% end %>
+</div>

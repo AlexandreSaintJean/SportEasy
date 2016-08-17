@@ -1,13 +1,8 @@
-<h1>Products#new</h1>
+<div class="container">
 
-<div>
-  <%= simple_form_for @product do |f| %>
-    <%= f.error_notification %>
-    <%= f.input :name, autofocus: true%>
-    <%= f.association :category %>
-    <%= f.input :description %>
-    <%= f.input :city %>
-    <%= f.input :price_per_day %>
-    <%= f.button :submit %>
-  <% end %>
+
+  <h1 class="text-center">Add a new offer</h1>
+
+    <%= render 'shared/productform' %>
+
 </div>

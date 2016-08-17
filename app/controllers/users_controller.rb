@@ -1,20 +1,28 @@
 class UsersController < ApplicationController
+  before_action :find_user
 
-  # def create
-  # end
-
-  # def new
-  # end
 
   def show
+    @posts = Post.all
+    @bookings = Booking.all
   end
 
   def edit
   end
 
   def update
+    @user = User.update(user_params)
+    redirect_to user_path(@user), notice: "User has been updated"
   end
 
-  def destroy
+
+  private
+
+  def user_params
+    params.require(:user).permit(:email, :first_name, :last_name, :city, :gender, :phone_number, :birth_date)
+  end
+
+  def find_user
+    @user = User.find(params[:id])
   end
 end

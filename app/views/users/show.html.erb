@@ -1,2 +1,56 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div class="container">
+  <h1 class="text-center">Mon Dashboard</h1>
+    <div class="info-dashboard">
+      <div class="current-profil">
+        <h2 class= "text-center">Mes informations personnelles</h2>
+            <div class="profil-actions">
+              <i class="fa fa-pencil" aria-hidden="true"></i>
+            </div>
+          <p><%= "First name: " + current_user.first_name + "  Last name: " + current_user.last_name %></p>
+          <p><%= "Gender: " + current_user.gender.to_s %></p>
+          <p><%= "Your email address: " + current_user.email.to_s %></p>
+          <p><%= "You live in: " + current_user.city.to_s %></p>
+          <p><%= "Your Phone Number: " + current_user.phone_number.to_s %></p>
+          <p><%= "Your birth date: " + current_user.birth_date.to_s %></p>
+      </div>
+      <div class="update-form hidden">
+        <%= simple_form_for current_user do |f| %>
+          <%= f.error_notification %>
+
+          <%= f.input :first_name, autofocus: true%>
+          <%= f.input :last_name %>
+          <%= f.input :gender, :collection => ['female','male'], as: :radio_buttons %>
+          <%= f.input :email %>
+          <%= f.input :city %>
+          <%= f.input :phone_number %>
+          <%= f.input :birth_date %>
+
+          <%= f.button :submit %>
+        <% end %>
+      </div>
+    </div>
+
+
+
+    <hr>
+    <h3>Your Activiy</h3>
+      <div class="info-dashboard">
+        <h4>Your available items</h4>
+          <% current_user.products.first %>
+
+
+
+        <h4>Currently rented</h4>
+
+        <h4>Your Rentals</h4>
+        <hr>
+          <%= link_to new_product_path do %>
+          <div class="btn btn-md btn-primary">Add Product</div>
+          <% end %>
+      </div>
+
+    <hr>
+    <h3>Security Info</h3>
+    <p><%= "Username: " + current_user.email.to_s %></p>
+    <p><%= link_to "Change your password?", edit_user_registration_path(current_user) %></p>
+</div>

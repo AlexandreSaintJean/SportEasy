@@ -28,13 +28,9 @@ class ProductsController < ApplicationController
 
   def update
     @product = Product.update(prod_params)
-    @product.user = current_user
-      if @product.save
-        redirect_to user_path(current_user)
-      else
-        render :edit
-    end
+        redirect_to user_path
   end
+
 
   def destroy
     @product.destroy
@@ -52,4 +48,3 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
   end
 end
-

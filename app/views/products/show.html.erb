@@ -1,0 +1,20 @@
+<h1><%= @product.name %></h1>
+
+<div>
+  <p><%= @product.description %></p>
+  <p>Find it in <%= @product.city %>, <%= @product.price_per_day %>€</p>
+  <br></br>
+  <p>Contact the owner</p>
+  Mettre un simple form pour pposer une question au owner
+  <p>Rent it!</p> bouton qui mène au datepicker
+</div>
+
+
+<h3>Reviews</h3>
+<div>
+<% @product.posts.each do |post| %>
+  <p><%= post.question %></p>
+  <p><%= post.answer %></p>
+<% end %>
+</div>
+

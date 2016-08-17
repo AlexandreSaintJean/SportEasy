@@ -15,11 +15,11 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(prod_params)
-
+    @product.user = current_user
     if @product.save
     redirect_to user_path(current_user)
     else
-      render :show
+      render :new
     end
   end
 

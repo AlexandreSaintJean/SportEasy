@@ -1,11 +1,16 @@
 class ProductsController < ApplicationController
 
+  skip_before_action :authenticate_user!
+  before_action :find_prod, only: [:show, :edit, :update, :destroy]
+
+
   def index
     @products = Product.all
   end
 
   def show
     @product = Product.find(params[:id])
+    @booking = Booking.new
   end
 
   def new
@@ -16,7 +21,7 @@ class ProductsController < ApplicationController
     @product = Product.new(prod_params)
     @product.user = current_user
     if @product.save
-    redirect_to user_path(current_user)
+      redirect_to user_path(current_user)
     else
       render :new
     end
@@ -26,15 +31,16 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
   end
 
+
   def update
-    @product.save
+    @product = Product.update(prod_params)
+        redirect_to user_path
   end
 
-  def destroy
-    @product = Product.find(params[:id])
-    @product.destroy
 
-    redirect_to product_path(@products)
+  def destroy
+    @product.destroy
+    redirect_to user_path
   end
 
 
@@ -43,5 +49,8 @@ class ProductsController < ApplicationController
   def prod_params
     params.require(:product).permit(:name, :description, :city, :price_per_day, :category_id, :user_id)
   end
-end
 
+  def find_prod
+    @product = Product.find(params[:id])
+  end
+end

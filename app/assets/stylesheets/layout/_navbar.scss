@@ -1,3 +1,8 @@
+/* -------------------------------------
+ * CSS code specific to home page
+ * (margin/padding adjustments)
+ * ------------------------------------- */
+
 /* Main class */
 .navbar-wagon {
   box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
@@ -42,27 +47,51 @@
 .navbar-wagon-link {
   color: #616668;
   font-size: 14px;
+  width:20px
 }
 .navbar-wagon-link:hover {
   color: #da552f;
   text-decoration: none;
 }
-
-/* Navbar right button */
 .navbar-wagon-button {
+  width: 150px;
   margin-left: 10px;
-  padding: 0 20px;
-  border-radius: 20em;
+  border-radius: 8px;
   line-height: 40px;
-  background-color: #D23333;
-  color: white;
-  font-size: 14px;
-  border: 2px solid #D23333;
+  font-size: 15px;
+  text-align: center;
 }
-.navbar-wagon-button:hover {
+
+.navbar-wagon-button-transparent {
+  @extend .navbar-wagon-button;
+  background-color: transparent;
+  color: #616668;
+  border: 2px solid #DCDBDC;
+
+}
+.navbar-wagon-button-transparent:hover {
+  @extend .navbar-wagon-button;
+  text-decoration: none;
+  color: #2C3E50;
+  background: #DCDBDC;
+  font-size: 17px;
+  border-color: #DCDBDC;
+  text-decoration: underline;
+}
+/* Navbar right button */
+.navbar-wagon-button-blue {
+  @extend .navbar-wagon-button;
+  background-color: #539EC2;
   color: white;
-  background: #D23333;
-  border-color: #ac2626;
+  border: 2px solid #539EC2;
+}
+.navbar-wagon-button-blue:hover {
+  @extend .navbar-wagon-button;
+  color: white;
+  background: #539EC2;
+  font-size: 17px;
+  border-color: #539EC2;
+  text-decoration: underline;
 }
 
 /* Navbar search form */
@@ -75,7 +104,7 @@
 }
 .navbar-wagon-search-btn {
   line-height: 40px;
-  color: #E6E6E6;
+  color: #539EC2;
   border: none;
   background: transparent;
   position: absolute;
@@ -89,7 +118,7 @@
   line-height: 40px;
   font-weight: lighter;
   color: #666666;
-  border: 1px solid #E6E6E6;
+  border: 1px solid #539EC2;
   border-radius: 5px;
   padding: 0 10px;
   font-size: 14px;

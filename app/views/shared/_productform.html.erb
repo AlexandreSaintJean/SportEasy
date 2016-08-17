@@ -1,0 +1,11 @@
+    <%= simple_form_for @product do |f| %>
+      <%= f.error_notification %>
+      <%= f.input :name, autofocus: true%>
+      <%= f.association :category %>
+      <%= f.input :description %>
+      <%= f.input :city %>
+      <%= f.input :price_per_day %>
+      <div class="text-center">
+        <%= f.button :submit, class: "btn btn-lg btn-primary" %>
+      </div>
+    <% end %>

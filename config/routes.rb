@@ -22,5 +22,4 @@ Rails.application.routes.draw do
       resources :posts, only: [:create]
       resources :bookings, only: [:create, :update]
     end
-
 end

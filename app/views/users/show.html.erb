@@ -1,17 +1,18 @@
 <div class="container">
   <h1 class="text-center">Mon Dashboard</h1>
+    <hr>
+    <h2 class= "text-center">Mes informations personnelles</h2>
     <div class="info-dashboard">
       <div class="current-profil">
-        <h2 class= "text-center">Mes informations personnelles</h2>
             <div class="profil-actions">
               <i class="fa fa-pencil" aria-hidden="true"></i>
             </div>
-          <p><%= "First name: " + current_user.first_name + "  Last name: " + current_user.last_name %></p>
-          <p><%= "Gender: " + current_user.gender.to_s %></p>
-          <p><%= "Your email address: " + current_user.email.to_s %></p>
-          <p><%= "You live in: " + current_user.city.to_s %></p>
-          <p><%= "Your Phone Number: " + current_user.phone_number.to_s %></p>
-          <p><%= "Your birth date: " + current_user.birth_date.to_s %></p>
+          <p><strong>Full name:</strong>  <%=current_user.first_name + " " + current_user.last_name %></p>
+          <p><strong>Gender:</strong> <%=current_user.gender.to_s %></p>
+          <p><strong>Email address:</strong> <%= current_user.email.to_s %></p>
+          <p><strong>City:</strong> <%=current_user.city.to_s %></p>
+          <p><strong>Phone Number:</strong> <%= current_user.phone_number.to_s %></p>
+          <p><strong>Birth Date:</strong> <%= current_user.birth_date.to_s %></p>
       </div>
       <div class="update-form hidden">
         <%= simple_form_for current_user do |f| %>
@@ -33,21 +34,52 @@
 
 
     <hr>
-    <h3>Your Activity</h3>
-      <div class="info-dashboard">
-        <h4>Your available items</h4>
-          <% current_user.products.each do |product| %>
-          <ul>
-            <li><%= product.name %></li>
-            <li><%= product.description %></li>
-          </ul>
-          <% end %>
+    <h2>Your Activity</h2>
+      <div class="info-dashboard delete-bullet-point">
+        <h3>As a renter</h3>
+          <h4>My pending booking requests</h4>
+            <% current_user.bookings.each do |booking| %>
+              <% if booking.accepted_at.nil? %>
+                <stong><%= booking.product.name %></stong>
+                <p>Asked for the following period <%= "from" + booking.start_date + " to " + booking.end_date %></p>
+              <% end %>
+            <% end %>
+          <h4>Futur bookings</h4>
+            <% current_user.bookings.each do |booking| %>
+              <% if booking.start_date > Date.today %>
+                <stong><%= booking.product.name %></stong>
+                <p><%= "from" + booking.start_date + " to " + booking.end_date %></p>
+              <% end %>
+            <% end %>
+          <h4>Booking History</h4>
+           <% current_user.bookings.each do |booking| %>
+              <% if booking.end_date < Date.today %>
+                <stong><%= booking.product.name %></stong>
+                <p>This was<%= "from" + booking.start_date + " to " + booking.end_date %></p>
+              <% end %>
+            <% end %>
+          <h4>Asked questions</h4>
+            <% current_user.posts.each do |post| %>
+            <ul>
+              <li><strong>Your question: <%= post.question %></strong></li>
+              <li><em>Reply from <%= post.product.booking.user.first_name %></em></li>
+              <li><%= post.answer %></li>
+            </ul>
+            <% end %>
 
 
+      </div>
+      <div class="info-dashboard delete-bullet-point">
+        <h3>As owner</h3>
+          <h4>Your available items</h4>
+            <% current_user.products.each do |product| %>
+            <ul>
+              <li><strong><%= product.name %></strong></li>
+              <li><%= product.description %></li>
+            </ul>
+            <% end %>
 
-        <h4>Currently rented</h4>
 
-        <h4>Your Rentals</h4>
         <hr>
           <%= link_to new_product_path do %>
           <div class="btn btn-md btn-primary">Add Product</div>

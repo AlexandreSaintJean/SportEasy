@@ -3,6 +3,7 @@
   border-radius: 5px;
   box-shadow: 1px 1px 1px #606060;
   padding: 15px;
+  margin: 15px;
   position: relative;
 }
 
@@ -16,4 +17,8 @@
 
 .hidden {
   display: none;
+}
+
+.delete-bullet-point li {
+ list-style-type: none;
 }

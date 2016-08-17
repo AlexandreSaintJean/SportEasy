@@ -11,7 +11,7 @@
   position: absolute;
   right: 10px;
   top : 10px;
-  color: #469AE0;
+  color: #2381D0;
   font-size: 22px;
 }
 
@@ -22,3 +22,27 @@
 .delete-bullet-point li {
  list-style-type: none;
 }
+
+
+.owner-product-line {
+  position: relative;
+
+}
+
+
+.edit-delete-product {
+  position: absolute;
+  display: inline;
+  top: 15px;
+  right: 15px;
+  .fa {
+    margin: 5px;
+    color: #2381D0;
+    text-decoration: none
+  }
+  a {
+    text-decoration: none;
+  }
+}
+
+

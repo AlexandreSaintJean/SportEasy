@@ -67,16 +67,25 @@
             </ul>
             <% end %>
 
-
       </div>
       <div class="info-dashboard delete-bullet-point">
         <h3>As owner</h3>
           <h4>Your available items</h4>
             <% current_user.products.each do |product| %>
-            <ul>
-              <li><strong><%= product.name %></strong></li>
-              <li><%= product.description %></li>
-            </ul>
+            <div class= "owner-product-line">
+              <ul>
+                <li><strong><%= product.name %></strong></li>
+                <li><%= product.description %></li>
+                <div class="edit-delete-product">
+                  <%= link_to edit_product_path(product) do %>
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                  <% end %>
+                  <%= link_to product_path(product), method: :delete do %>
+                    <i class="fa fa-remove" aria-hidden="true"></i>
+                  <% end %>
+                </div>
+              </ul>
+            </div>
             <% end %>
 
 

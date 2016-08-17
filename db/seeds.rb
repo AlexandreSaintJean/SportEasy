@@ -17,6 +17,7 @@ User.create(email: "john@paul.com", password: "123456789", gender: "male", first
 Product.create(name: "Pink bike", description: "A pretty little pink bike", city: "Bordeaux", price_per_day: 5, user_id: 1, category_id: 1)
 Product.create(name: "Blue bike", description: "A pretty little blue bike", city: "Bordeaux", price_per_day: 5, user_id: 2, category_id: 2)
 
-Booking.create(start_date: 20160505, end_date: 20160515)
+Post.create(question: "Is it ok to book it for 2h?", product_id: 1, user_id: 1)
+Post.create(question: "Is it avallaible?", product_id: 2, user_id: 2)
 
-Post.create(question: "How are you ?")
+Booking.create(start_date: 20160505, end_date: 20160515)

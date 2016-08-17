@@ -1,14 +1,29 @@
-<h1>Products#show</h1>
+<p><%= link_to "Go back to the list", products_path%></p>
+<br></br>
 
-<ul>
 <div>
-  <p><%= @product.name %></p>
+  <h1><%= @product.name %></h1>
   <p><%= @product.category.name %></p>
-   <p><%= @product.description %></p>
+  <p><%= @product.description %></p>
   <p><%= @product.city %></p>
   <p><%= @product.price_per_day %> € per day</p>
 </div>
-</ul>
+
+<br></br>
+<div>
+<h3>Messages about this product:</h3>
+  <p><% @product.posts.each do |post| %></p>
+    <p><strong>Post from <%= @product.user.first_name %> </strong></p>
+    <p><%= post.question %></p>
+    <p><%= post.answer %></p>
+  <p><% end %></p>
+</div>
+
+
+
+
+
+
 
 
 

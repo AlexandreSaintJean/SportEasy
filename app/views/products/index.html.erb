@@ -1,12 +1,13 @@
 <h1>Sport equipment near you:</h1>
 
-
 <ul>
-<div>
-<% @products.each do |product| %>
-  <p><%= link_to product.name, product_path(product)%></p>
-  <p>Find it in <%= product.city %>, <%= product.price_per_day %> € per day</p>
-<% end %>
-</div>
+  <div>
+    <% @products.each do |product| %>
+      <p><%= link_to product.name, product_path(product) %></p>
+      <p>Find it in <%= product.city %>, <%= product.price_per_day %> €/day</p>
+    <% end %>
+  </div>
 </ul>
+
+
 

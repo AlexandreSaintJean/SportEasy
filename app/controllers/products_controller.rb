@@ -1,8 +1,7 @@
 class ProductsController < ApplicationController
-  skip_before_action :authenticate_user!
 
   def index
-     @products = Product.all
+    @products = Product.all
   end
 
   def show
@@ -23,6 +22,14 @@ class ProductsController < ApplicationController
     end
   end
 
+  def edit
+    @product = Product.find(params[:id])
+  end
+
+  def update
+    @product.save
+  end
+
   def destroy
     @product = Product.find(params[:id])
     @product.destroy
@@ -30,9 +37,8 @@ class ProductsController < ApplicationController
     redirect_to product_path(@products)
   end
 
+
   private
-
-
 
   def prod_params
     params.require(:product).permit(:name, :description, :city, :price_per_day, :category_id, :user_id)

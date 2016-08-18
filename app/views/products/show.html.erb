@@ -11,6 +11,11 @@
   <div class= "delete-bullet-point">
 
     <p><%= @product.category.name %></p>
+
+    <% @product.photos.each do |photo| %>
+      <%= cl_image_tag photo.path, width: 300, height: 200, crop: :fill %>
+    <% end %>
+
     <p><%= @product.description %></p>
     <p><%= @product.city %></p>
     <p><%= @product.price_per_day %> € per day</p>

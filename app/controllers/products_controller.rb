@@ -9,6 +9,7 @@ class ProductsController < ApplicationController
   end
 
   def show
+    @post = Post.new
     @product = Product.find(params[:id])
     @booking = Booking.new
   end

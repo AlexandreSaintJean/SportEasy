@@ -1,8 +1,8 @@
-<p><%= link_to "Go back to the list", products_path%></p>
+<p><%= link_to "Go back to the list", category_path%></p>
 <br></br>
 
 
-  <h1><%= @product.name %></h1>
+<h1><%= @product.name %></h1>
 
 
 <div class= "delete-bullet-point">
@@ -20,11 +20,25 @@
 <div>
 <h3>Messages about this product:</h3>
   <p><% @product.posts.each do |post| %></p>
-    <p><strong>Post from <%= @product.user.first_name %> </strong></p>
+    <p><strong>Post from <%= post.user.first_name %> </strong></p>
     <p><%= post.question %></p>
     <p><%= post.answer %></p>
   <p><% end %></p>
 </div>
+
+<h3>Write a message:</h3>
+
+<%= simple_form_for [@product, @post] do |f| %>
+
+  <% if current_user == @product.user %>
+    <%= f.input :answer %>
+  <% else %>
+    <%= f.input :question %>
+  <% end %>
+  <%= f.button :submit, class: "btn btn-lg btn-primary" %>
+<% end %>
+
+
 
 <%= render 'bookings/new' %>
 

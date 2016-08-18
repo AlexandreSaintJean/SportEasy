@@ -61,12 +61,17 @@
                 <p>This was<%= "from" + booking.start_date + " to " + booking.end_date %></p>
               <% end %>
             <% end %>
-          <h4>Asked questions</h4>
+          <h4>Your questions</h4>
             <% current_user.posts.each do |post| %>
             <ul>
               <li><strong>Your question: <%= post.question %></strong></li>
-              <li><em>Reply from <%= post.product.booking.user.first_name %></em></li>
-              <li><%= post.answer %></li>
+              <% unless post.answer.nil? %>
+                <%= link_to product_path(@product) do %>
+                  <div class="btn btn-md btn-primary">
+                    Show answer
+                  </div>
+                <% end %>
+              <% end %>
             </ul>
             <% end %>
 
@@ -98,12 +103,13 @@
 
           <h4>Pending Questions</h4>
             <% current_user.products.each do |product| %>
-              <%= product.posts.question %>
-              <% if product.post.answer.nil? %>
+              <%= product.posts.each do |question| %>
+              <% unless product.post.question.nil? %>
                 <p>You have a new question on this product:</p>
                 <%= product.name %>
                 <%= link_to "Answer", edit_product_posts_path(product) %>
-                <% end %>
+               <% end %>
+              <% end %>
             <% end %>
           <h5>Reply</h5>
           <h4>Pending Requets</h4>

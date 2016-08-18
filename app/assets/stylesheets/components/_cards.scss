@@ -1,95 +1,47 @@
-.card-athletics {
+.card {
   border: 2px solid #DCDBDC;
   border-radius: 8px;
   height: 175px;
   background-size: cover !important;
+  margin-bottom: 20px;
+  &:hover {
+    opacity: 0.7;
+  }
+  &-description {
+    position: relative;
+    top: 70px;
+    left: 20px;
+    color: #4A8FAE;
+    font-size: 26px;
+    font-weight:500;
+    text-shadow: 1px 1px #3D3D3A;
+  }
+  &-link {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    z-index:2;
+    background: black;
+    opacity: 0;
+  }
+}
+
+.athletics {
   background-image: image-url('athletics.jpg');
-  margin-bottom: 20px;
 }
-.card-athletics:hover{
-  opacity: 0.7;
-}
-
-.card-cycling {
-  border: 2px solid #DCDBDC;
-  border-radius: 8px;
-  height: 175px;
-  background-size: cover !important;
+.cycling {
   background-image: image-url('cycling.jpeg');
-  margin-bottom: 20px;
 }
-.card-cycling:hover{
-  opacity: 0.7;
-}
-
-.card-racket {
-  border: 2px solid #DCDBDC;
-  border-radius: 8px;
-  height: 175px;
-  background-size: cover !important;
+.racket {
   background-image: image-url('racket.jpg');
-  margin-bottom: 20px;
 }
-.card-racket:hover{
-  opacity: 0.7;
-}
-
-.card-automotive {
-  border: 2px solid #DCDBDC;
-  border-radius: 8px;
-  height: 175px;
-  background-size: cover !important;
+.automotive {
   background-image: image-url('automotive.jpg');
-  margin-bottom: 20px;
 }
-.card-automotive:hover{
-  opacity: 0.7;
-}
-
-.card-snow {
-  border: 2px solid #DCDBDC;
-  border-radius: 8px;
-  height: 175px;
-  background-size: cover !important;
+.snow {
   background-image: image-url('snow.jpg');
-  margin-bottom: 20px;
 }
-.card-snow:hover{
-  opacity: 0.7;
-}
-
-.card-fight {
-  border: 2px solid #DCDBDC;
-  border-radius: 8px;
-  height: 175px;
-  background-size: cover !important;
-  background-image: image-url('fight.jpg');
-  margin-bottom: 20px;
-}
-.card-fight:hover{
-  opacity: 0.7;
-}
-
-
-.card-description {
-  position: relative;
-  top: 70px;
-  left: 20px;
-  color: #4A8FAE;
-  font-size: 26px;
-  font-weight:500;
-  text-shadow: 1px 1px #3D3D3A;
-
-}
-.card-link {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 100%;
-  z-index:2;
-  background: black;
-  opacity: 0;
-}
-.card:hover{
-  opacity: 0.1;
+.fight {
+background-image: image-url('fight.jpg');
 }

@@ -3,6 +3,9 @@
     <hr>
     <h2 class= "text-center">Mes informations personnelles</h2>
     <div class="info-dashboard">
+      <% if current_user.photo? %>
+       <%= cl_image_tag current_user.photo.path, width: 60, height: 60, crop: :fill %>
+      <% end %>
       <div class="current-profil">
             <div class="profil-actions">
               <i class="fa fa-pencil" aria-hidden="true"></i>
@@ -25,6 +28,7 @@
           <%= f.input :city %>
           <%= f.input :phone_number %>
           <%= f.input :birth_date %>
+          <%= f.input :photo, as: :attachinary %>
 
           <%= f.button :submit %>
         <% end %>

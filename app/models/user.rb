@@ -7,5 +7,6 @@ class User < ApplicationRecord
   has_many :bookings
   has_many :posts
   has_many :products
+  has_attachment :photo
 
 end

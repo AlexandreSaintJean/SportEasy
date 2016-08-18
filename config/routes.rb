@@ -1,23 +1,14 @@
 Rails.application.routes.draw do
 
-
-  # get 'users/create'
-
-  # get 'users/new'
-
-  # get 'users/show'
-
-  # get 'users/edit'
-
-  # get 'users/update'
-
-  # get 'users/destroy'
+  mount Attachinary::Engine => "/attachinary"
 
   devise_for :users
   root to: 'categories#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-    resources :users, only: [:show, :update]
+
+    resources :users, only: [:update]
     resources :categories, only: [:show]
+    get '/dashboard', to: 'users#dashboard'
 
 
     resources :products do

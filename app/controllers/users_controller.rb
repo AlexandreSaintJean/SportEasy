@@ -12,7 +12,7 @@ class UsersController < ApplicationController
 
   def update
     @user = User.update(user_params)
-    redirect_to user_path(@user), notice: "User has been updated"
+    redirect_to dashboard_path, notice: "User has been updated"
   end
 
 

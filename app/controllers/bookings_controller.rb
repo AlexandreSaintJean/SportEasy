@@ -1,22 +1,14 @@
 class BookingsController < ApplicationController
-  before_action :find_booking, only: [:create, :edit, :update]
+  def new
+    @booking = Booking.new
+  end
 
   def create
     @booking = Booking.new(booking_params)
+    @booking.product = Product.find(params[:product_id])
+    @booking.user = current_user
     if @booking.save
-      redirect_to user_path
-    else
-      render :new
-    end
-  end
-
-  def edit
-  end
-
-  def update
-    @booking = Booking.edit(booking_params)
-    if @booking.save
-      redirect_to user_path
+      dashboard_path
     else
       render :new
     end
@@ -25,10 +17,7 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.require(:booking).permit(:start_date, :end_date, :comment)
+    params.require(:booking).permit(:start_date, :end_date, :product_id, :user_id)
   end
 
-  def find_booking
-    @booking = Booking.find(params[:id])
-  end
 end

@@ -19,5 +19,3 @@ Product.create(name: "Blue bike", description: "A pretty little blue bike", city
 
 Post.create(question: "Is it ok to book it for 2h?", product_id: 1, user_id: 1)
 Post.create(question: "Is it avallaible?", product_id: 2, user_id: 2)
-
-Booking.create(start_date: 20160505, end_date: 20160515)

@@ -17,15 +17,12 @@ gem 'simple_form'
 gem 'autoprefixer-rails'
 gem 'devise'
 
+
 #Upload picture
 gem 'cloudinary', '1.1.0'
 gem "attachinary", github: "assembler/attachinary"
 gem "jquery-fileupload-rails"
 gem "coffee-rails"
-
-# Datetimepicker from https://github.com/TrevorS/bootstrap3-datetimepicker-rails
-gem 'momentjs-rails', '>= 2.9.0'
-gem 'bootstrap3-datetimepicker-rails', '~> 4.17.37'
 
 group :development, :test do
   gem 'binding_of_caller'

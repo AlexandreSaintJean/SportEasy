@@ -2,8 +2,7 @@
 
   <%= simple_form_for [@product, @booking] do |f| %>
     <%= f.error_notification %>
-    <%= f.input :start_date %>
-    <%= f.input :end_date %>
+    <%= f.input :start_date, input_html: {type: :date} %>
+    <%= f.input :end_date, input_html: {type: :date} %>
     <%= f.button :submit %>
   <% end %>
-

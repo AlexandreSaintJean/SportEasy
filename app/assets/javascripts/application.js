@@ -1,9 +1,10 @@
+
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-sprockets
 
-// Datetimepicker from https://github.com/TrevorS/bootstrap3-datetimepicker-rails
-//= require moment
-//= require bootstrap-datetimepicker
+//= require jquery-fileupload/basic
+//= require cloudinary/jquery.cloudinary
+//= require attachinary
 
 //= require_tree .

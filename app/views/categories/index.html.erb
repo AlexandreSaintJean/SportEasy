@@ -14,55 +14,17 @@
 
 <div class="container">
   <div class="row">
-
-      <div class="col-sm-4">
-          <div class="card-athletisme">
+    <% @categories.each do |c| %>
+      <%= link_to category_path(c) do %>
+        <div class="col-sm-4">
+          <div class="card-<%= c.name.downcase %>">
             <div class="card-description">
-                Athlétisme
+              <%= c.name %>
             </div>
           </div>
-      </div>
-
-      <div class="col-sm-4">
-        <div class="card-cyclisme">
-          <div class="card-description">
-              Cyclisme
-          </div>
         </div>
-      </div>
-
-      <div class="col-sm-4">
-        <div class="card-raquette">
-          <div class="card-description">
-              Sports de raquette
-          </div>
-        </div>
-      </div>
-
-      <div class="col-sm-4">
-        <div class="card-mecanique">
-          <div class="card-description">
-              Sports mécaniques
-          </div>
-        </div>
-      </div>
-
-      <div class="col-sm-4">
-        <div class="card-telemark">
-          <div class="card-description">
-              Sports de glisse
-          </div>
-        </div>
-      </div>
-
-      <div class="col-sm-4">
-        <div class="card-combat">
-          <div class="card-description">
-              Sports de combat
-          </div>
-        </div>
-      </div>
-
+      <% end %>
+    <% end %>
   </div>
 </div>
 

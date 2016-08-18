@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :find_user
 
 
-  def show
+  def dashboard
     @posts = Post.all
     @bookings = Booking.all
   end
@@ -19,10 +19,10 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email, :first_name, :last_name, :city, :gender, :phone_number, :birth_date)
+    params.require(:user).permit(:email, :first_name, :last_name, :city, :gender, :phone_number, :birth_date, :photo)
   end
 
   def find_user
-    @user = User.find(params[:id])
+    @user = current_user
   end
 end

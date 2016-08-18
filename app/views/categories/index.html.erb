@@ -2,7 +2,7 @@
   <div class="banner-content">
     <h1>Move anywhere! <br/>
         Sport stuff near you, <br/>
-        avaliable, <br/>
+        available, <br/>
         simple</h1>
   </div>
 </div>
@@ -16,7 +16,7 @@
   <div class="row">
     <% @categories.each do |category| %>
       <div class="col-sm-4">
-        <%= link_to products_path(@category) do %>
+        <%= link_to category_path(category) do %>
           <div class="card">
             <div class="card-description">
                 <%= category.name %>

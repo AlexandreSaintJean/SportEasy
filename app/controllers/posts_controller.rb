@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
 
+  before_action :find_product, only: [:new]
+
   def index
     @posts = Post.all
   end
@@ -13,12 +15,12 @@ class PostsController < ApplicationController
   end
 
   def create
+    @product = Product.find(params[:product_id])
     @post = Post.new(post_params)
-    if @post.save
-      redirect_to product_path(@post)
-    else
-      render :show
-    end
+    @post.product = @product
+    @post.user = current_user
+    @post.save
+    redirect_to product_path(@product)
   end
 
   def edit
@@ -26,20 +28,23 @@ class PostsController < ApplicationController
   end
 
   def update
-    @post.save
   end
 
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
-
     redirect_to @product
   end
+
 
   private
 
   def post_params
     params.require(:post).permit(:question, :answer, :product_id, :user_id)
+  end
+
+  def find_product
+    @product = Product.find(params[:product_id])
   end
 
 end

@@ -9,6 +9,7 @@ class ProductsController < ApplicationController
   end
 
   def show
+    @post = Post.new
     @product = Product.find(params[:id])
     @booking = Booking.new
   end
@@ -21,7 +22,7 @@ class ProductsController < ApplicationController
     @product = Product.new(prod_params)
     @product.user = current_user
     if @product.save
-      redirect_to user_path(current_user)
+      redirect_to dashboard_path
     else
       render :new
     end
@@ -34,13 +35,13 @@ class ProductsController < ApplicationController
 
   def update
     @product = Product.update(prod_params)
-        redirect_to user_path
+        redirect_to dashboard_path
   end
 
 
   def destroy
     @product.destroy
-    redirect_to user_path
+    redirect_to dashboard_path
   end
 
 

@@ -27,9 +27,8 @@
           <%= f.input :email %>
           <%= f.input :city %>
           <%= f.input :phone_number %>
-          <%= f.input :birth_date %>
+          <%= f.input :birth_date, as: :string, input_html: {type: :date} %>
           <%= f.input :photo, as: :attachinary %>
-
           <%= f.button :submit %>
         <% end %>
       </div>
@@ -91,12 +90,24 @@
               </ul>
             </div>
             <% end %>
+            <div class="text-center">
+              <%= link_to new_product_path do %>
+              <div class="btn btn-md btn-primary">Add Product</div>
+              <% end %>
+            </div>
 
-
-        <hr>
-          <%= link_to new_product_path do %>
-          <div class="btn btn-md btn-primary">Add Product</div>
-          <% end %>
+          <h4>Pending Questions</h4>
+            <% current_user.products.each do |product| %>
+              <%= product.posts.question %>
+              <% if product.post.answer.nil? %>
+                <p>You have a new question on this product:</p>
+                <%= product.name %>
+                <%= link_to "Answer", edit_product_posts_path(product) %>
+                <% end %>
+            <% end %>
+          <h5>Reply</h5>
+          <h4>Pending Requets</h4>
+          <i class="fa fa-check" aria-hidden="true"></i>
       </div>
 
     <hr>

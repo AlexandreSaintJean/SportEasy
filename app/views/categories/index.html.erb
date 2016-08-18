@@ -1,31 +1,69 @@
 <div class="banner">
-  <div class="banner-content">
     <h1>Move anywhere! <br/>
         Sport stuff near you, <br/>
         avaliable, <br/>
         simple</h1>
-  </div>
 </div>
 
 <div class="text-center">
-  <h1> Listing Category </h1>
+  <h1> Listing Category <br/>
+  <br/>
+  </h1>
 </div>
 
 
 <div class="container">
   <div class="row">
-    <% @categories.each do |category| %>
+
       <div class="col-sm-4">
-        <%= link_to products_path(@category) do %>
-          <div class="card">
+          <div class="card-athletisme">
             <div class="card-description">
-                <%= category.name %>
+
+                Athlétisme
             </div>
           </div>
-        <% end %>
-
       </div>
-    <% end %>
+
+      <div class="col-sm-4">
+        <div class="card-cyclisme">
+          <div class="card-description">
+              Cyclisme
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-4">
+        <div class="card-raquette">
+          <div class="card-description">
+              Sports de raquette
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-4">
+        <div class="card-mecanique">
+          <div class="card-description">
+              Sports mécaniques
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-4">
+        <div class="card-telemark">
+          <div class="card-description">
+              Sports de glisse
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-4">
+        <div class="card-combat">
+          <div class="card-description">
+              Sports de combat
+          </div>
+        </div>
+      </div>
+
   </div>
 </div>
 

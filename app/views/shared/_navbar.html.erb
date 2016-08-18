@@ -8,9 +8,9 @@
   <div class="navbar-wagon-right hidden-xs hidden-sm">
 
     <!-- Search form -->
-    <form action="" class="navbar-wagon-search">
-      <input type="text" class="navbar-wagon-search-input" placeholder="Search something">
-      <button type="submit" class="navbar-wagon-search-btn">
+    <form action="" class="global-search">
+      <input type="text" class="global-search-input" placeholder="Search something">
+      <button type="submit" class="global-search-btn">
         <i class="fa fa-search"></i>
       </button>
     </form>
@@ -53,13 +53,13 @@
     <% else %>
 
       <!-- Login text link -->
-      <%= link_to t(".sign_in", default: "Log-in"), new_user_session_path, class: "navbar-wagon-button-transparent" %>
-      <%= link_to t(".sign_in", default: "Sign-in"), new_user_session_path, class: "navbar-wagon-button-transparent" %>
+      <%= link_to t(".sign_in", default: "Log-in"), new_user_session_path, class: "global-button-transparent" %>
+      <%= link_to t(".sign_in", default: "Sign-in"), new_user_session_path, class: "global-button-transparent" %>
 
     <% end %>
 
     <!-- Button (call-to-action) -->
-    <%= link_to t(".top_call_to_action", default: "Post stuff"), "#", class: "navbar-wagon-button-blue" %>
+    <%= link_to t(".top_call_to_action", default: "Post stuff"), "#", class: "global-button-blue" %>
   </div>
 
   <!-- Dropdown list appearing on mobile only -->

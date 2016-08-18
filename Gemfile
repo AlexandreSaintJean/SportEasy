@@ -16,6 +16,7 @@ gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'autoprefixer-rails'
 gem 'devise'
+gem 'figaro'
 
 # Datetimepicker from https://github.com/TrevorS/bootstrap3-datetimepicker-rails
 gem 'momentjs-rails', '>= 2.9.0'

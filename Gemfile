@@ -16,7 +16,12 @@ gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'autoprefixer-rails'
 gem 'devise'
-gem 'figaro'
+
+#Upload picture
+gem 'cloudinary', '1.1.0'
+gem "attachinary", github: "assembler/attachinary"
+gem "jquery-fileupload-rails"
+gem "coffee-rails"
 
 # Datetimepicker from https://github.com/TrevorS/bootstrap3-datetimepicker-rails
 gem 'momentjs-rails', '>= 2.9.0'

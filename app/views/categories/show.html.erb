@@ -1,14 +1,17 @@
-<p><%= link_to "Go back to the categories", root_path%></p>
-<br></br>
+<div class="container">
 
-<h1>Sport equipment about <%= @category.name %> :</h1>
+  <p><%= link_to "Go back to the categories", root_path %></p>
+  <br></br>
+
+  <h1>Sport equipment about <%= @category.name %> :</h1>
 
 
-  <div>
-    <% @category.products.each do |product| %>
-      <p><%= link_to product.name, product_path(product) %></p>
-      <p><strong>Find it in :</strong> <%= product.city %> <strong>Price :</strong> <%= product.price_per_day %> €/day</p>
-    <% end %>
-  </div>
+    <div>
+      <% @category.products.each do |product| %>
+        <p><%= link_to product.name, product_path(product) %></p>
+        <p><strong>Find it in :</strong> <%= product.city %> <strong>Price :</strong> <%= product.price_per_day %> €/day</p>
+      <% end %>
+    </div>
 
+</div>
 

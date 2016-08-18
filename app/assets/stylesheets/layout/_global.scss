@@ -1,0 +1,80 @@
+/* Our buttons for the entre website */
+
+.global-button {
+  width: 150px;
+  margin-left: 10px;
+  border-radius: 8px;
+  line-height: 40px;
+  font-size: 15px;
+  text-align: center;
+}
+
+/* Button transparent */
+
+.global-button-transparent {
+  @extend .global-button;
+  background-color: transparent;
+  color: #616668;
+  border: 2px solid #DCDBDC;
+
+}
+.global-button-transparent:hover {
+  @extend .global-button;
+  text-decoration: none;
+  color: #2C3E50;
+  background: #DCDBDC;
+  font-size: 17px;
+  border-color: #DCDBDC;
+  text-decoration: underline;
+}
+
+/* Button blue */
+
+.global-button-blue {
+  @extend .global-button;
+  background-color: #539EC2;
+  color: white;
+  border: 2px solid #539EC2;
+}
+.global-button-blue:hover {
+  @extend .global-button;
+  color: white;
+  background: #539EC2;
+  font-size: 17px;
+  border-color: #539EC2;
+  text-decoration: underline;
+}
+
+/* Navbar search form */
+.global-search {
+  flex: 0 1 300px;
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 10px;
+  position: relative;
+}
+.global-search-btn {
+  line-height: 40px;
+  color: #539EC2;
+  border: none;
+  background: transparent;
+  position: absolute;
+  right: 14px;
+  top: -2px;
+  z-index: 1;
+}
+.global-search-input {
+  flex: 0 1 300px;
+  transition: all 0.15s ease;
+  line-height: 40px;
+  font-weight: lighter;
+  color: #666666;
+  border: 1px solid #539EC2;
+  border-radius: 5px;
+  padding: 0 10px;
+  font-size: 14px;
+  outline: none;
+}
+.global-search-input:focus  {
+  border: 1px solid #CCCCCC;
+}

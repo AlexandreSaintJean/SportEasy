@@ -27,6 +27,7 @@
           <%= f.input :email %>
           <%= f.input :city %>
           <%= f.input :phone_number %>
+          <%= f.input :birth_date, as: :string, input_html: {type: :date} %>
           <%= f.input :photo, as: :attachinary %>
           <%= f.button :submit %>
         <% end %>

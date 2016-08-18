@@ -1,0 +1,10 @@
+<div class="container">
+  <%= simple_form_for [@product, @post] do |f| %>
+    <% if current_user == @product.user %>
+      <%= f.input :answer %>
+    <% else %>
+      <%= f.input :question %>
+    <% end %>
+    <%= f.button :submit, class: "btn btn-lg btn-primary" %>
+  <% end %>
+</div>

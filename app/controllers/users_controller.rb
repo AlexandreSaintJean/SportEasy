@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :find_user
 
 
-  def show
+  def dashboard
     @posts = Post.all
     @bookings = Booking.all
   end
@@ -23,6 +23,6 @@ class UsersController < ApplicationController
   end
 
   def find_user
-    @user = User.find(params[:id])
+    @user = current_user
   end
 end

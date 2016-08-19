@@ -103,15 +103,14 @@
 
           <h4>Pending Questions</h4>
             <% current_user.products.each do |product| %>
-              <%= product.posts.each do |question| %>
-              <% unless product.post.question.nil? %>
-                <p>You have a new question on this product:</p>
-                <%= product.name %>
-                <%= link_to "Answer", edit_product_posts_path(product) %>
-               <% end %>
-              <% end %>
+              <% product.posts.each do |post| %>
+                  <% unless post.question.nil? %>
+                    <p>You have a new question on <%= product.name %>
+                    <%= link_to "Reply", edit_product_post_path(product_id: post.product_id, id: post.id), class: "btn btn-primary btn-md" %>
+                    </p>
+                  <% end %>
+                <% end %>
             <% end %>
-          <h5>Reply</h5>
           <h4>Pending Requets</h4>
           <i class="fa fa-check" aria-hidden="true"></i>
       </div>

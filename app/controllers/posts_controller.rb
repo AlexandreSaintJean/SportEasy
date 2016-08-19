@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
 
-  before_action :find_product, only: [:new]
+  before_action :find_product, only: [:new, :create, :edit, :update]
 
   def index
     @posts = Post.all
@@ -25,9 +25,17 @@ class PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
+
   end
 
   def update
+    @post = Post.find(params[:id])
+    if @post.update(post_params)
+      redirect_to @product
+    else
+      render :edit
+    end
+
   end
 
   def destroy

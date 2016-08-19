@@ -5,28 +5,28 @@
         simple</h1>
 </div>
 
-<div class="text-center">
-  <h1> Listing Category <br/>
-  <br/>
-  </h1>
-</div>
+
+<div class="listing-category">
+  <div class="text-center">
+    <h1> Listing Category</h1>
+  </div>
 
 
-<div class="container">
-  <div class="row">
-    <% @categories.each do |c| %>
-      <%= link_to category_path(c) do %>
-        <div class="col-sm-4">
-          <div class="card <%= c.name.downcase %>">
-            <div class="card-description">
-              <%= c.name %>
+  <div class="container">
+    <div class="row">
+      <% @categories.each do |c| %>
+        <%= link_to category_path(c) do %>
+          <div class="col-sm-4">
+            <div class="card <%= c.name.downcase %>">
+              <div class="card-description">
+                <p><%= c.name %></p>
+              </div>
             </div>
           </div>
-        </div>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
   </div>
 </div>
-
 
 

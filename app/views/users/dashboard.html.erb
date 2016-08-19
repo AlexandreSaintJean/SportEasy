@@ -1,11 +1,26 @@
 <div class="container">
   <h1 class="text-center">Mon Dashboard</h1>
-    <hr>
-    <h2 class= "text-center">Mes informations personnelles</h2>
-    <div class="info-dashboard">
+      <hr>
       <% if current_user.photo? %>
-       <%= cl_image_tag current_user.photo.path, width: 60, height: 60, crop: :fill %>
+       <%= cl_image_tag current_user.photo.path, width: 60, height: 60, crop: :fill, gravity: :face, radius: :max %>
       <% end %>
+      <div class="tabs">
+    <a class="tab active" href="#details">
+      <h3>My Details</h3>
+    </a>
+    <a class="tab" href="#activity">
+      <h3>My Activiy</h3>
+    </a>
+    <a class="tab" href="#renter">
+      <h3>Renter</h3>
+    </a>
+    <a class="tab" href="#owner">
+      <h3>Owner</h3>
+    </a>
+  </div>
+      <h2 id="details">My Details</h2>
+      <div class="info-dashboard">
+
       <div class="current-profil">
             <div class="profil-actions">
               <i class="fa fa-pencil" aria-hidden="true"></i>
@@ -37,9 +52,9 @@
 
 
     <hr>
-    <h2>Your Activity</h2>
+    <h2 id="activity">Your Activity</h2>
       <div class="info-dashboard delete-bullet-point">
-        <h3>As a renter</h3>
+        <h3 id="renter">As a renter</h3>
           <h4>My pending booking requests</h4>
             <% current_user.bookings.each do |booking| %>
               <% if booking.accepted_at.nil? %>
@@ -79,11 +94,13 @@
       </div>
 
       <div class="info-dashboard delete-bullet-point">
-        <h3>As owner</h3>
-          <div class="text-center">
-            <%= link_to new_product_path do %>
-              <div class="btn btn-primary btn-lg">ADD NEW PRODUCT</div>
-              <% end %>
+        <h3 id="owner">As owner</h3>
+          <div class="my-product-card">
+            <div class="text-center">
+              <%= link_to new_product_path do %>
+                <div class="btn btn-primary btn-lg">ADD NEW PRODUCT</div>
+                <% end %>
+            </div>
           </div>
           <h4>Your available items</h4>
 
@@ -110,6 +127,7 @@
               <% end %>
             </div>
 
+        <div class="my-product-card">
           <h4>Pending Questions</h4>
             <% current_user.products.each do |product| %>
               <% product.posts.each do |post| %>
@@ -120,7 +138,9 @@
                 <% end %>
               <% end %>
             <% end %>
-          <h4>Pending Requets</h4>
+          </div>
+          <div class="my-product-card">
+          <h4>Pending Request</h4>
             <% current_user.products.each do |product| %>
               <% product.bookings.each do |booking| %>
                   <% if booking.accepted_at.nil? %>
@@ -131,6 +151,7 @@
                   <% end %>
                 <% end %>
               <% end %>
+          </div>
               <h4>My past rentals</h4>
               <% current_user.products.each do |product| %>
                 <% product.bookings.each do |booking| %>
@@ -149,3 +170,4 @@
     <p><%= "Username: " + current_user.email.to_s %></p>
     <p><%= link_to "Change your password?", edit_user_registration_path(current_user) %></p>
 </div>
+

@@ -54,16 +54,17 @@
   border: 2px solid #539EC2;
   width: 170px;
   padding:auto;
+    a {
+    color:white;
+    font-size: 15px;
+      &:hover{
+      font-size:17px;
+      }
+    }
 }
 
-a {
-  color:white;
-  font-size: 15px;
-}
-a:hover{
-  color:white;
-  font-size:17px;
-}
+
+
 p{
   margin: 0px;
 }
@@ -109,3 +110,5 @@ p{
 .global-search-input:focus  {
   border: 1px solid #CCCCCC;
 }
+
+

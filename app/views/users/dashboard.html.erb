@@ -49,70 +49,99 @@
             <% end %>
           <h4>Futur bookings</h4>
             <% current_user.bookings.each do |booking| %>
-              <% if booking.start_date > Date.today %>
+              <% if (booking.start_date > Date.today.to_s) && (booking.accepted_at != nil) %>
                 <stong><%= booking.product.name %></stong>
                 <p><%= "from" + booking.start_date + " to " + booking.end_date %></p>
               <% end %>
             <% end %>
           <h4>Booking History</h4>
            <% current_user.bookings.each do |booking| %>
-              <% if booking.end_date < Date.today %>
+              <% if booking.end_date < Date.today.to_s %>
                 <stong><%= booking.product.name %></stong>
                 <p>This was<%= "from" + booking.start_date + " to " + booking.end_date %></p>
               <% end %>
             <% end %>
           <h4>Your questions</h4>
-            <% current_user.posts.each do |post| %>
+          <% current_user.posts.each do |post| %>
             <ul>
-              <li><strong>Your question: <%= post.question %></strong></li>
+              <li>For the following product <%= post.product.name %>
+                <p><%= post.question %></p>
+              </li>
               <% unless post.answer.nil? %>
-                <%= link_to product_path(@product) do %>
+                <%= link_to product_path(post.product_id) do %>
                   <div class="btn btn-md btn-primary">
                     Show answer
                   </div>
                 <% end %>
               <% end %>
             </ul>
-            <% end %>
-
+          <% end %>
       </div>
+
       <div class="info-dashboard delete-bullet-point">
         <h3>As owner</h3>
+          <div class="text-center">
+            <%= link_to new_product_path do %>
+              <div class="btn btn-primary btn-lg">ADD NEW PRODUCT</div>
+              <% end %>
+          </div>
           <h4>Your available items</h4>
-            <% current_user.products.each do |product| %>
-            <div class= "owner-product-line">
-              <ul>
-                <li><strong><%= product.name %></strong></li>
-                <li><%= product.description %></li>
-                <div class="edit-delete-product">
-                  <%= link_to edit_product_path(product) do %>
-                    <i class="fa fa-pencil" aria-hidden="true"></i>
-                  <% end %>
-                  <%= link_to product_path(product), method: :delete do %>
-                    <i class="fa fa-remove" aria-hidden="true"></i>
-                  <% end %>
+
+            <div class="my-product-card">
+              <% current_user.products.each do |product| %>
+                <div class= "owner-product-line">
+                  <ul>
+                    <li>
+                      <strong>
+                        <%= link_to product.name, product_path(product) %>
+                      </strong>
+                    </li>
+                    <li><%= product.description %></li>
+                    <div class="edit-delete-product">
+                      <%= link_to edit_product_path(product) do %>
+                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                      <% end %>
+                      <%= link_to product_path(product), method: :delete do %>
+                        <i class="fa fa-remove" aria-hidden="true"></i>
+                      <% end %>
+                    </div>
+                  </ul>
                 </div>
-              </ul>
-            </div>
-            <% end %>
-            <div class="text-center">
-              <%= link_to new_product_path do %>
-              <div class="btn btn-md btn-primary">Add Product</div>
               <% end %>
             </div>
 
           <h4>Pending Questions</h4>
             <% current_user.products.each do |product| %>
               <% product.posts.each do |post| %>
-                  <% unless post.question.nil? %>
-                    <p>You have a new question on <%= product.name %>
-                    <%= link_to "Reply", edit_product_post_path(product_id: post.product_id, id: post.id), class: "btn btn-primary btn-md" %>
+                <% unless post.question.nil? %>
+                  <p>You have a new question on <%= product.name %>
+                  <%= link_to "Reply", edit_product_post_path(product_id: post.product_id, id: post.id), class: "btn btn-primary btn-md" %>
+                    </p>
+                <% end %>
+              <% end %>
+            <% end %>
+          <h4>Pending Requets</h4>
+            <% current_user.products.each do |product| %>
+              <% product.bookings.each do |booking| %>
+                  <% if booking.accepted_at.nil? %>
+                    <p>You have a new booking on <%= product.name %> from <%= booking.user.first_name + " " + booking.user.last_name%></p>
+                    <p>Booking date: from <%= booking.start_date + " to " + booking.end_date %></p>
+                    <%= link_to "Accept",  product_booking_path(booking.product, booking), method: :patch, confirm: "Are you sure?", class: "btn btn-primary btn-md" %>
                     </p>
                   <% end %>
                 <% end %>
-            <% end %>
-          <h4>Pending Requets</h4>
-          <i class="fa fa-check" aria-hidden="true"></i>
+              <% end %>
+              <h4>My past rentals</h4>
+              <% current_user.products.each do |product| %>
+                <% product.bookings.each do |booking| %>
+                  <% unless booking.accepted_at.nil? %>
+                    <p>
+                      <%= product.name %> from <%= booking.start_date + " to " + booking.end_date %>
+                      <i class="fa fa-check" aria-hidden="true"></i>
+                    </p>
+                  <% end %>
+                <% end %>
+              <% end %>
       </div>
 
     <hr>

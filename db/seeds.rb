@@ -7,18 +7,55 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-Category.create(name: "Athletics")
-Category.create(name: "Cycling")
-Category.create(name: "Fight")
-Category.create(name: "Automotive")
-Category.create(name: "Snow")
-Category.create(name: "Racket")
+Category.create(name: "Water")
+Category.create(name: "Mountain and Nature")
+Category.create(name: "Street sports")
+Category.create(name: "Fitness and Cardio")
+Category.create(name: "Sports ball")
+Category.create(name: "Racket sports")
+Category.create(name: "Danse and Gymnastic")
+Category.create(name: "Combat sports")
+Category.create(name: "Various")
 
-User.create(email: "paul@paul.com", password: "123456789", gender: "male", first_name: "Paul", last_name: "McCartney", city: "Bordeaux", phone_number: 55555456, birth_date: 19561225)
-User.create(email: "john@paul.com", password: "123456789", gender: "male", first_name: "John", last_name: "Lennon", city: "Bordeaux", phone_number: 55545456, birth_date: 19620512)
 
-Product.create(name: "Pink bike", description: "A pretty little pink bike", city: "Bordeaux", price_per_day: 5, user_id: 1, category_id: 1)
-Product.create(name: "Blue bike", description: "A pretty little blue bike", city: "Bordeaux", price_per_day: 5, user_id: 2, category_id: 2)
+# WATER
+#   Swimming, water aerobics
+#   Surf, Bodyboard, Wakeboard
+#   Boat, Kayak, Paddle
+#   Diving, Snorkeling
+#   Sports wind
 
-Post.create(question: "Is it ok to book it for 2h?", product_id: 1, user_id: 1)
-Post.create(question: "Is it avallaible?", product_id: 2, user_id: 2)
+# MOUNTAIN AND NATURE
+#   Ski, Snowboard, Cross country
+#   Trekking, Climbing
+#   Ice sports
+#   Camping
+
+# STREET SPORT
+#   Scooter, skate, roller
+
+# FITNESS CARDIO
+#   Fitness, bodybuilding
+#   Cycling
+#   Running, Trail, Athletics
+#   Walking
+
+# SPORTS BALL
+#   Soccer
+#   Basket-ball
+#   Rugby, Handball, Volley-ball
+
+# RACKET SPORT
+#   Tennis, Ping-Pong
+#   Badminton, Squash
+
+# DANSE AND GYMNASTIC
+#   Danse, Yoga, Gymnastic
+
+# COMBAT SPORT
+#   Combat sport
+
+# VARIOUS
+#   Golf
+#   Arc, bowling, darts
+

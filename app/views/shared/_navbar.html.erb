@@ -48,10 +48,7 @@
 
       <!-- Login text link -->
       <%= link_to t(".sign_in", default: "Log-in"), new_user_session_path, class: "global-button-transparent" %>
-
-
-      <%= link_to t(".sign_up", default: "Sign-in"), new_user_session_path, class: "global-button-transparent" %>
-
+      <%= link_to t(".sign_in", default: "Sign-up"), new_user_registration_path, class: "global-button-transparent" %>
 
     <% end %>
 

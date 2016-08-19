@@ -13,6 +13,6 @@ Rails.application.routes.draw do
 
     resources :products do
       resources :posts, only: [:create, :new, :edit, :update]
-      resources :bookings, only: [:create, :update]
+      resources :bookings, only: [:create, :new, :edit, :update]
     end
 end

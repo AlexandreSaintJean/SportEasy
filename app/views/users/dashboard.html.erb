@@ -82,7 +82,11 @@
             <% current_user.products.each do |product| %>
             <div class= "owner-product-line">
               <ul>
-                <li><strong><%= product.name %></strong></li>
+                <li>
+                  <strong>
+                    <%= link_to product.name, product_path(product) %>
+                  </strong>
+                </li>
                 <li><%= product.description %></li>
                 <div class="edit-delete-product">
                   <%= link_to edit_product_path(product) do %>

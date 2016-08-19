@@ -8,34 +8,41 @@
   <h1><%= @product.name %></h1>
 
 
-  <div class= "delete-bullet-point">
 
-    <p><%= @product.category.name %></p>
+
+  <div class= "container">
+    <p><strong>Category: </strong><%= @product.category.name %></p>
 
     <% @product.photos.each do |photo| %>
       <%= cl_image_tag photo.path, width: 300, height: 200, crop: :fill %>
     <% end %>
 
     <p><%= @product.description %></p>
-    <p><%= @product.city %></p>
-    <p><%= @product.price_per_day %> € per day</p>
+    <p><strong>Available in: </strong><%= @product.city %><strong> for: </strong><%= @product.price_per_day %> € per day</p>
+    <p><strong>Owner: </strong><%= @product.user.first_name %></p>
   </div>
 
+  <% if current_user == @product.user %>
+    <%= link_to "Delete product", product_path(@product), method: :delete, data: { confirm: "Are you sure you want to delete this product?" } %>
+  <% end %>
 
   <br></br>
-  <div>
-  <h3>Messages about this product:</h3>
-    <p><% @product.posts.each do |post| %></p>
-      <p><strong>Post from <%= post.user.first_name %> </strong></p>
-      <p><%= post.question %></p>
-      <p><%= post.answer %></p>
-    <p><% end %></p>
+  <div class="container">
+    <h3>Messages about this product:</h3>
+    <% @product.posts.each do |post| %>
+      <% if current_user != @product.user %>
+        <p><strong> Question from <%= post.user.first_name %>:</strong></p>
+        <p><%= post.question %></p>
+      <% elsif (post.user == @product.user) && (!post.answer.blank?) %>
+        <p><strong>Answer from <%= @product.user.first_name %> </strong></p>
+        <p><%= post.answer %></p>
+      <% end %>
+    <% end %>
   </div>
 
   <h3>Write a message:</h3>
 
   <%= simple_form_for [@product, @post] do |f| %>
-
     <% if current_user == @product.user %>
       <%= f.input :answer %>
     <% else %>
@@ -46,6 +53,8 @@
 
 
 
-  <%= render 'bookings/new' %>
+    <%= render 'bookings/new' %>
+
+
 
 </div>

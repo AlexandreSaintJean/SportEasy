@@ -1,12 +1,28 @@
 <div class="container">
-  <h1 class="text-center">Mon Dashboard</h1>
-    <hr>
-    <h2 class= "text-center">Mes informations personnelles</h2>
-    <div class="info-dashboard">
-      <% if current_user.photo? %>
-       <%= cl_image_tag current_user.photo.path, width: 60, height: 60, crop: :fill %>
-      <% end %>
-      <div class="current-profil">
+
+        <div class="tabs">
+          <a class="tab active" href="#details">
+            <h3>My Details</h3>
+          </a>
+          <a class="tab" href="#activity">
+            <h3>My Activiy</h3>
+          </a>
+          <a class="tab" href="#renter">
+            <h3>Renter</h3>
+          </a>
+          <a class="tab" href="#owner">
+            <h3>Owner</h3>
+          </a>
+        <div class="position-img">
+            <% if current_user.photo? %>
+           <%= cl_image_tag current_user.photo.path, width: 120, height: 120, crop: :fill, gravity: :face, class: "img-circle" %>
+          <% end %>
+        </div>
+      </div>
+      <h2 id="details">My Details</h2>
+      <div class="info-dashboard">
+
+      <div class="current-profil container-list">
             <div class="profil-actions">
               <i class="fa fa-pencil" aria-hidden="true"></i>
             </div>
@@ -16,6 +32,7 @@
           <p><strong>City:</strong> <%=current_user.city.to_s %></p>
           <p><strong>Phone Number:</strong> <%= current_user.phone_number.to_s %></p>
           <p><strong>Birth Date:</strong> <%= current_user.birth_date.to_s %></p>
+
       </div>
       <div class="update-form hidden">
         <%= simple_form_for current_user do |f| %>
@@ -37,16 +54,22 @@
 
 
     <hr>
-    <h2>Your Activity</h2>
+    <h2 id="activity">Your Activity</h2>
       <div class="info-dashboard delete-bullet-point">
-        <h3>As a renter</h3>
+      <div class="my-product-card">
+        <h3 id="renter">As a renter</h3>
+      </div>
+      <div class="my-product-card">
           <h4>My pending booking requests</h4>
             <% current_user.bookings.each do |booking| %>
               <% if booking.accepted_at.nil? %>
                 <stong><%= booking.product.name %></stong>
                 <p>Asked for the following period <%= "from" + booking.start_date + " to " + booking.end_date %></p>
+                <hr>
               <% end %>
             <% end %>
+        </div>
+        <div class="my-product-card">
           <h4>Futur bookings</h4>
             <% current_user.bookings.each do |booking| %>
               <% if (booking.start_date > Date.today.to_s) && (booking.accepted_at != nil) %>
@@ -54,6 +77,8 @@
                 <p><%= "from" + booking.start_date + " to " + booking.end_date %></p>
               <% end %>
             <% end %>
+          </div>
+          <div class="my-product-card">
           <h4>Booking History</h4>
            <% current_user.bookings.each do |booking| %>
               <% if booking.end_date < Date.today.to_s %>
@@ -61,6 +86,7 @@
                 <p>This was<%= "from" + booking.start_date + " to " + booking.end_date %></p>
               <% end %>
             <% end %>
+          </div>
           <h4>Your questions</h4>
           <% current_user.posts.each do |post| %>
             <ul>
@@ -79,11 +105,13 @@
       </div>
 
       <div class="info-dashboard delete-bullet-point">
-        <h3>As owner</h3>
-          <div class="text-center">
-            <%= link_to new_product_path do %>
-              <div class="btn btn-primary btn-lg">ADD NEW PRODUCT</div>
-              <% end %>
+        <h3 id="owner">As owner</h3>
+          <div class="my-product-card">
+            <div class="text-center">
+              <%= link_to new_product_path do %>
+                <div class="btn btn-primary btn-lg">ADD NEW PRODUCT</div>
+                <% end %>
+            </div>
           </div>
           <h4>Your available items</h4>
 
@@ -110,27 +138,41 @@
               <% end %>
             </div>
 
+        <div class="my-product-card">
           <h4>Pending Questions</h4>
             <% current_user.products.each do |product| %>
               <% product.posts.each do |post| %>
                 <% unless post.question.nil? %>
+                <div class="container-list">
                   <p>You have a new question on <%= product.name %>
+                  <div class="right-side">
                   <%= link_to "Reply", edit_product_post_path(product_id: post.product_id, id: post.id), class: "btn btn-primary btn-md" %>
+                  </div>
                     </p>
+                  </div>
+                    <hr>
                 <% end %>
               <% end %>
             <% end %>
-          <h4>Pending Requets</h4>
+          </div>
+          <div class="my-product-card">
+          <h4>Pending Request</h4>
             <% current_user.products.each do |product| %>
               <% product.bookings.each do |booking| %>
                   <% if booking.accepted_at.nil? %>
+                   <div class="container-list">
                     <p>You have a new booking on <%= product.name %> from <%= booking.user.first_name + " " + booking.user.last_name%></p>
                     <p>Booking date: from <%= booking.start_date + " to " + booking.end_date %></p>
+                    <div class="right-side">
                     <%= link_to "Accept",  product_booking_path(booking.product, booking), method: :patch, confirm: "Are you sure?", class: "btn btn-primary btn-md" %>
+                    </div>
                     </p>
+                    </div>
+                    <hr>
                   <% end %>
                 <% end %>
               <% end %>
+          </div>
               <h4>My past rentals</h4>
               <% current_user.products.each do |product| %>
                 <% product.bookings.each do |booking| %>
@@ -139,6 +181,7 @@
                       <%= product.name %> from <%= booking.start_date + " to " + booking.end_date %>
                       <i class="fa fa-check" aria-hidden="true"></i>
                     </p>
+                    <hr>
                   <% end %>
                 <% end %>
               <% end %>
@@ -149,3 +192,4 @@
     <p><%= "Username: " + current_user.email.to_s %></p>
     <p><%= link_to "Change your password?", edit_user_registration_path(current_user) %></p>
 </div>
+

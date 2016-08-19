@@ -31,7 +31,7 @@
               <% end %>
             </li>
             <li>
-              <%= link_to "#" do %>
+              <%= link_to root_path do %>
                 <i class="fa fa-home"></i>  <%= t(".profile", default: "Home") %>
               <% end %>
             </li>
@@ -48,12 +48,15 @@
 
       <!-- Login text link -->
       <%= link_to t(".sign_in", default: "Log-in"), new_user_session_path, class: "global-button-transparent" %>
+
+
       <%= link_to t(".sign_up", default: "Sign-in"), new_user_session_path, class: "global-button-transparent" %>
+
 
     <% end %>
 
     <!-- Button (call-to-action) -->
-    <%= link_to t(".top_call_to_action", default: "Post stuff"), "#", class: "global-button-blue" %>
+    <%= link_to t(".top_call_to_action", default: "Add product"), new_product_path, class: "global-button-blue" %>
   </div>
 
   <!-- Dropdown list appearing on mobile only -->

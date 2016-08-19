@@ -1,0 +1,12 @@
+shallow: :true dans les routes du post
+
+bouton: lien
+<%= link_to "" category_path(@category) %>
+
+recuperer le mot
+var test = document.getElementById("label1").textContent;
+
+
+
+liste des produits content l'output tapé
+

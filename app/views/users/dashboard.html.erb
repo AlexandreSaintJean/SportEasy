@@ -80,26 +80,28 @@
 
       <div class="info-dashboard delete-bullet-point">
         <h3>As owner</h3>
+          <div class="text-center">
+            <%= link_to new_product_path do %>
+              <div class="btn btn-primary btn-lg">ADD NEW PRODUCT</div>
+              <% end %>
+          </div>
           <h4>Your available items</h4>
-            <% current_user.products.each do |product| %>
-            <div class= "owner-product-line">
-              <ul>
-                <li><strong><%= product.name %></strong></li>
-                <li><%= product.description %></li>
-                <div class="edit-delete-product">
-                  <%= link_to edit_product_path(product) do %>
-                    <i class="fa fa-pencil" aria-hidden="true"></i>
-                  <% end %>
-                  <%= link_to product_path(product), method: :delete do %>
-                    <i class="fa fa-remove" aria-hidden="true"></i>
-                  <% end %>
+            <div class="my-product-card">
+              <% current_user.products.each do |product| %>
+                <div class= "owner-product-line">
+                  <ul>
+                    <li><strong><%= product.name %></strong></li>
+                    <li><%= product.description %></li>
+                    <div class="edit-delete-product">
+                      <%= link_to edit_product_path(product) do %>
+                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                      <% end %>
+                      <%= link_to product_path(product), method: :delete do %>
+                        <i class="fa fa-remove" aria-hidden="true"></i>
+                      <% end %>
+                    </div>
+                  </ul>
                 </div>
-              </ul>
-            </div>
-            <% end %>
-            <div class="text-center">
-              <%= link_to new_product_path do %>
-              <div class="btn btn-md btn-primary">Add Product</div>
               <% end %>
             </div>
 

@@ -1,10 +1,11 @@
 /* Our buttons for the entre website */
 
 .global-button {
-  width: 150px;
+  width: 160px;
   margin-left: 10px;
   border-radius: 8px;
-  line-height: 40px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   font-size: 15px;
   text-align: center;
 }
@@ -35,6 +36,7 @@
   background-color: #539EC2;
   color: white;
   border: 2px solid #539EC2;
+  text-align:middle;
 }
 .global-button-blue:hover {
   @extend .global-button;
@@ -43,6 +45,35 @@
   font-size: 17px;
   border-color: #539EC2;
   text-decoration: underline;
+}
+/* global button blue sitewide*/
+.global-button-blue-sitewide {
+  @extend .global-button;
+  background-color: #539EC2;
+  color: white;
+  border: 2px solid #539EC2;
+  width: 170px;
+  padding:auto;
+}
+
+a {
+  color:white;
+  font-size: 15px;
+}
+a:hover{
+  color:white;
+  font-size:17px;
+}
+p{
+  margin: 0px;
+}
+.global-button-blue-sitewide:hover {
+  @extend .global-button-blue-sitewide;
+  color: white;
+  background: #539EC2;
+  font-size: 15px;
+  border-color: #539EC2;
+  text-decoration: none;
 }
 
 /* Navbar search form */

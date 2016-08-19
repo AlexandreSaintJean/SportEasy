@@ -3,9 +3,16 @@ class BookingsController < ApplicationController
     @booking = Booking.new
   end
 
+
+  def edit
+    @booking = booking.find(params[:id])
+  end
+
   def update
-      @booking = Booking.find(params[:id])
-    if @booking.update(post_params)
+    @product = Product.find(params[:product_id])
+    @booking = Booking.find(params[:id])
+    @booking.accepted_at = Date.today
+    if @booking.save
       redirect_to dashboard_path
     else
       render :edit
@@ -27,7 +34,7 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.require(:booking).permit(:start_date, :end_date, :product_id, :user_id)
+    params.require(:booking).permit(:start_date, :end_date, :product_id, :user_id, :accepted_at, :comment)
   end
 
 end

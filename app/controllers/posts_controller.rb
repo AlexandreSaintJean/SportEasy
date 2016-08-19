@@ -30,7 +30,7 @@ class PostsController < ApplicationController
   def update
   end
 
-  def destroy
+  def delete
     @post = Post.find(params[:id])
     @post.destroy
     redirect_to @product

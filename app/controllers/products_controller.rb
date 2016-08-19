@@ -32,12 +32,10 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
   end
 
-
   def update
     @product = Product.update(prod_params)
         redirect_to dashboard_path
   end
-
 
   def destroy
     @product.destroy

@@ -7,9 +7,6 @@
 
   <h1><%= @product.name %></h1>
 
-
-
-
   <div class= "container">
     <p><strong>Category: </strong><%= @product.category.name %></p>
 
@@ -30,13 +27,8 @@
   <div class="container">
     <h3>Messages about this product:</h3>
     <% @product.posts.each do |post| %>
-      <% if current_user != @product.user %>
-        <p><strong> Question from <%= post.user.first_name %>:</strong></p>
-        <p><%= post.question %></p>
-      <% elsif (post.user == @product.user) && (!post.answer.blank?) %>
-        <p><strong>Answer from <%= @product.user.first_name %> </strong></p>
-        <p><%= post.answer %></p>
-      <% end %>
+      <p><%= post.question %></p>
+      <p><%= post.answer %></p>
     <% end %>
   </div>
 

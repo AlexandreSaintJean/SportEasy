@@ -28,7 +28,72 @@
   <% end %>
 
   <br></br>
+
+
+  <!-- questions -->
+
   <div class="container">
+
+  <% if current_user == @product.user && @product.posts != nil  %>
+  <!-- Si je suis propriétaire et j'ai des questions -->
+    <p>
+      <h3>Question(s) on your product:</h3>
+    </p>
+
+    <!-- Afficher les questions postées -->
+
+    <% @product.posts.each do |post| %>
+      <p><strong> Question from <%= post.user.first_name %>:</strong></p>
+      <p>"<%= post.question %>"</p>
+
+      <% if post.answer != nil %>
+        <p>Answer from <%= @product.user.first_name %></p>
+        <p><%= post.answer %></p>
+      <% else %>
+        <%= link_to "Reply", edit_product_post_path(product_id: post.product_id, id: post.id), class: "btn btn-primary btn-md" %>
+      <% end %>
+    <% end %>
+
+  <%elsif current_user == @product.user  %>
+  <!-- Je suis propriétaire mais je n'ai pas de question -->
+    <p>You owned this poduct and</p>
+    <p>You have no question from renters</p>
+
+  <% else %>
+  <!-- Je ne suis pas le propriétaire -->
+
+    <!-- Formulaire pour poser une question -->
+    <h3>Ask a question to the owner:</h3>
+      <%= simple_form_for [@product, @post] do |f| %>
+          <%= f.input :question %>
+        <%= f.button :submit, "Ask", class: "btn btn-md btn-primary" %>
+      <% end %>
+    <!-- Afficher les questions déjà postées -->
+    <div>
+      <% @product.posts.each do |post| %>
+        <p><strong>Question from <%= post.user.first_name %></strong></p>
+        <p><%= post.question %></p>
+
+        <!-- Réponse -->
+
+        <% if post.answer != nil %>
+          <p>Answer from <%= @product.user.first_name %></p>
+          <p><%= post.answer %></p>
+        <% else %>
+          <p>Pending answer</p>
+        <% end %>
+
+      <% end %>
+    </div>
+
+
+
+  <% end %>
+
+
+
+<!--
+
     <h3>Ask a question to the owner:</h3>
     <% @product.posts.each do |post| %>
       <% if current_user != @product.user %>
@@ -56,6 +121,6 @@
 
     <%= render 'bookings/new' %>
 
-
+ -->
 
 </div>

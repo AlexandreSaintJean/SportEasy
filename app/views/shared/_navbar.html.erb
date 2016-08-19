@@ -19,12 +19,6 @@
     <% if user_signed_in? %>
 
       <!-- Notification -->
-      <%= link_to "#", class: "navbar-wagon-item navbar-wagon-link" do %>
-        <div class="badge-container">
-          <i class="fa fa-envelope-o"></i>
-          <div class="badge badge-blue">3</div>
-        </div>
-      <% end %>
 
       <!-- Profile picture and dropdown -->
       <div class="navbar-wagon-item">
@@ -54,7 +48,10 @@
 
       <!-- Login text link -->
       <%= link_to t(".sign_in", default: "Log-in"), new_user_session_path, class: "global-button-transparent" %>
-      <%= link_to t(".sign_in", default: "Sign-in"), new_user_registration_path, class: "global-button-transparent" %>
+
+
+      <%= link_to t(".sign_up", default: "Sign-in"), new_user_session_path, class: "global-button-transparent" %>
+
 
     <% end %>
 

@@ -49,14 +49,14 @@
             <% end %>
           <h4>Futur bookings</h4>
             <% current_user.bookings.each do |booking| %>
-              <% if booking.start_date > Date.today %>
+              <% if booking.start_date > Date.today.to_s %>
                 <stong><%= booking.product.name %></stong>
                 <p><%= "from" + booking.start_date + " to " + booking.end_date %></p>
               <% end %>
             <% end %>
           <h4>Booking History</h4>
            <% current_user.bookings.each do |booking| %>
-              <% if booking.end_date < Date.today %>
+              <% if booking.end_date < Date.today.to_s %>
                 <stong><%= booking.product.name %></stong>
                 <p>This was<%= "from" + booking.start_date + " to " + booking.end_date %></p>
               <% end %>
@@ -66,7 +66,8 @@
             <ul>
               <li><strong>Your question: <%= post.question %></strong></li>
               <% unless post.answer.nil? %>
-                <%= link_to product_path(@product) do %>
+                <%= link_to product_path(post.product_id
+) do %>
                   <div class="btn btn-md btn-primary">
                     Show answer
                   </div>
@@ -112,7 +113,22 @@
                 <% end %>
             <% end %>
           <h4>Pending Requets</h4>
-          <i class="fa fa-check" aria-hidden="true"></i>
+            <% current_user.products.each do |product| %>
+              <% product.bookings.each do |booking| %>
+                  <% if booking.accepted_at.nil? %>
+                    <p>You have a new booking on <%= product.name %> from <%= booking.user.first_name + " " + booking.user.last_name%></p>
+                    <p>Booking date: from <%= booking.start_date + " to " + booking.end_date %></p>
+                    <%= link_to "Accept",  product_booking_path(product_id: booking.product_id, id: booking.id), class: "btn btn-primary btn-md" %>
+                    </p>
+                  <% else %>
+                    <h4>My past rentals</h4>
+                    <p>
+                      <%= product.name %> from <%= booking.start_date + " to " + booking.end_date %>
+                      <i class="fa fa-check" aria-hidden="true"></i>
+                    </p>
+                  <% end %>
+                <% end %>
+            <% end %>
       </div>
 
     <hr>

@@ -3,14 +3,24 @@ class BookingsController < ApplicationController
     @booking = Booking.new
   end
 
+  def update
+      @booking = Booking.find(params[:id])
+    if @booking.update(post_params)
+      redirect_to dashboard_path
+    else
+      render :edit
+    end
+  end
+
+
   def create
     @booking = Booking.new(booking_params)
     @booking.product = Product.find(params[:product_id])
     @booking.user = current_user
     if @booking.save
-      dashboard_path
+      redirect_to dashboard_path
     else
-      render :new
+      render 'product/:id'
     end
   end
 
@@ -21,3 +31,4 @@ class BookingsController < ApplicationController
   end
 
 end
+
